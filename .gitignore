@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+*.log
+logs/
+exports/
+.streamlit/secrets.toml
+.DS_Store
+
+# data/financials.json は同梱データ（正データ）なので追跡する

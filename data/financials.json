@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27 12:13:21 JST",
+  "generated_at": "2026-08-27 12:36:31 JST",
   "source": "Yahoo! Finance（yfinance 経由で取得）",
   "unit": "百万円",
   "disclaimer": "本ツールの数値は Yahoo! Finance の公開データを取得したものであり、各社の有価証券報告書と完全に一致することを保証しない。投資判断には使用しないこと。",
@@ -87,41 +87,41 @@
         {
           "year": 2023,
           "revenue": 13136194,
-          "operating_profit": 1844953,
+          "operating_profit": 1828986,
           "net_profit": 1213116,
           "net_profit_reported": 1213116,
           "gross_margin": 0.7892,
-          "operating_margin": 0.1404,
+          "operating_margin": 0.1392,
           "net_margin": 0.0923
         },
         {
           "year": 2024,
           "revenue": 13374569,
-          "operating_profit": 1937382,
+          "operating_profit": 1922910,
           "net_profit": 1279521,
           "net_profit_reported": 1279521,
           "gross_margin": 0.7805,
-          "operating_margin": 0.1449,
+          "operating_margin": 0.1438,
           "net_margin": 0.0957
         },
         {
           "year": 2025,
           "revenue": 13704727,
-          "operating_profit": 1669639,
+          "operating_profit": 1649571,
           "net_profit": 1000016,
           "net_profit_reported": 1000016,
           "gross_margin": 0.7739,
-          "operating_margin": 0.1218,
+          "operating_margin": 0.1204,
           "net_margin": 0.073
         },
         {
           "year": 2026,
           "revenue": 14409121,
-          "operating_profit": 1786410,
+          "operating_profit": 1706221,
           "net_profit": 1037032,
           "net_profit_reported": 1037032,
           "gross_margin": 0.7769,
-          "operating_margin": 0.124,
+          "operating_margin": 0.1184,
           "net_margin": 0.072
         }
       ],
@@ -231,7 +231,9 @@
           "equity_ratio": 0.2082
         }
       ],
-      "notes": []
+      "notes": [
+        "2026-03期は総資産が前期比 +55%（30,062,483 → 46,721,259百万円）と大きく動いている。事業の分離・取得や会計基準の変更が含まれる可能性があり、自己資本比率や資産効率の推移をそのまま比較できない"
+      ]
     },
     "9843": {
       "company_code": "9843",
@@ -264,31 +266,31 @@
         {
           "year": 2024,
           "revenue": 896667,
-          "operating_profit": 122197,
+          "operating_profit": 124274,
           "net_profit": 90158,
           "net_profit_reported": 90158,
           "gross_margin": 0.5101,
-          "operating_margin": 0.1363,
+          "operating_margin": 0.1386,
           "net_margin": 0.1005
         },
         {
           "year": 2025,
           "revenue": 928828,
-          "operating_profit": 114400,
+          "operating_profit": 117665,
           "net_profit": 82546,
           "net_profit_reported": 82546,
           "gross_margin": 0.5102,
-          "operating_margin": 0.1232,
+          "operating_margin": 0.1267,
           "net_margin": 0.0889
         },
         {
           "year": 2026,
           "revenue": 912248,
-          "operating_profit": 121268,
+          "operating_profit": 125526,
           "net_profit": 89270,
           "net_profit_reported": 89270,
           "gross_margin": 0.5321,
-          "operating_margin": 0.1329,
+          "operating_margin": 0.1376,
           "net_margin": 0.0979
         }
       ],
@@ -399,7 +401,8 @@
         }
       ],
       "notes": [
-        "決算期に飛びがある: 2022-02 → 2024-03（25ヶ月・この間の決算期がデータに存在しない）"
+        "決算期に飛びがある: 2022-02 → 2024-03（25ヶ月・この間の決算期がデータに存在しない）",
+        "2024-03期は総資産が前期比 +43%（983,840 → 1,411,292百万円）と大きく動いている。事業の分離・取得や会計基準の変更が含まれる可能性があり、自己資本比率や資産効率の推移をそのまま比較できない"
       ]
     },
     "4661": {
@@ -423,7 +426,7 @@
         {
           "year": 2023,
           "revenue": 483123,
-          "operating_profit": 111200,
+          "operating_profit": 111199,
           "net_profit": 80734,
           "net_profit_reported": 80734,
           "gross_margin": 0.3855,
@@ -433,7 +436,7 @@
         {
           "year": 2024,
           "revenue": 618493,
-          "operating_profit": 165438,
+          "operating_profit": 165437,
           "net_profit": 120225,
           "net_profit_reported": 120225,
           "gross_margin": 0.4034,
@@ -592,41 +595,41 @@
         {
           "year": 2023,
           "revenue": 1359115,
-          "operating_profit": 144602,
+          "operating_profit": 148928,
           "net_profit": 94065,
           "net_profit_reported": 94065,
           "gross_margin": 0.3461,
-          "operating_margin": 0.1064,
+          "operating_margin": 0.1096,
           "net_margin": 0.0692
         },
         {
           "year": 2024,
           "revenue": 1439231,
-          "operating_profit": 141953,
+          "operating_profit": 146682,
           "net_profit": 87121,
           "net_profit_reported": 87121,
           "gross_margin": 0.3554,
-          "operating_margin": 0.0986,
+          "operating_margin": 0.1019,
           "net_margin": 0.0605
         },
         {
           "year": 2025,
           "revenue": 1530556,
-          "operating_profit": 107656,
+          "operating_profit": 113968,
           "net_profit": 70272,
           "net_profit_reported": 70272,
           "gross_margin": 0.3598,
-          "operating_margin": 0.0703,
+          "operating_margin": 0.0745,
           "net_margin": 0.0459
         },
         {
           "year": 2026,
           "revenue": 1583719,
-          "operating_profit": 191301,
+          "operating_profit": 199412,
           "net_profit": 134675,
           "net_profit_reported": 134675,
           "gross_margin": 0.3771,
-          "operating_margin": 0.1208,
+          "operating_margin": 0.1259,
           "net_margin": 0.085
         }
       ],
@@ -761,41 +764,41 @@
         {
           "year": 2023,
           "revenue": 10974373,
-          "operating_profit": 1273205,
+          "operating_profit": 1302389,
           "net_profit": 1005277,
           "net_profit_reported": 1005277,
           "gross_margin": 0.2948,
-          "operating_margin": 0.116,
+          "operating_margin": 0.1187,
           "net_margin": 0.0916
         },
         {
           "year": 2024,
           "revenue": 11260037,
-          "operating_profit": 1012816,
+          "operating_profit": 1035255,
           "net_profit": 846060,
           "net_profit_reported": 970573,
           "gross_margin": 0.2816,
-          "operating_margin": 0.0899,
+          "operating_margin": 0.0919,
           "net_margin": 0.0751
         },
         {
           "year": 2025,
           "revenue": 12034917,
-          "operating_profit": 1280339,
+          "operating_profit": 1276635,
           "net_profit": 1067431,
           "net_profit_reported": 1141600,
           "gross_margin": 0.2933,
-          "operating_margin": 0.1064,
+          "operating_margin": 0.1061,
           "net_margin": 0.0887
         },
         {
           "year": 2026,
           "revenue": 12479620,
-          "operating_profit": 1553690,
+          "operating_profit": 1447507,
           "net_profit": 1030893,
           "net_profit_reported": -326865,
           "gross_margin": 0.3081,
-          "operating_margin": 0.1245,
+          "operating_margin": 0.116,
           "net_margin": 0.0826
         }
       ],
@@ -909,6 +912,7 @@
         "2024年3月期は最終利益（970,573百万円）と継続事業利益（846,060百万円）が乖離している。非継続事業の影響を除くため、本ツールでは継続事業ベースを純利益として扱う",
         "2025年3月期は最終利益（1,141,600百万円）と継続事業利益（1,067,431百万円）が乖離している。非継続事業の影響を除くため、本ツールでは継続事業ベースを純利益として扱う",
         "2026年3月期は最終利益（-326,865百万円）と継続事業利益（1,030,893百万円）が乖離している。非継続事業の影響を除くため、本ツールでは継続事業ベースを純利益として扱う",
+        "2026-03期は総資産が前期比 -56%（35,293,173 → 15,683,490百万円）と大きく動いている。事業の分離・取得や会計基準の変更が含まれる可能性があり、自己資本比率や資産効率の推移をそのまま比較できない",
         "売上を取得できなかった期を分析対象から外した: 2022-03-31"
       ]
     }

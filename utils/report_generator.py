@@ -89,16 +89,17 @@ class ReportGenerator:
             company_data.get('sector')
         )
         
+        income_statements = financial_data.get('income_statement', [])
+        period_count = len(income_statements)
         financial_section = f"""## 2. 財務分析
 
-### 過去5期の財務サマリー
+### 過去{period_count}期の財務サマリー
 
 #### 損益計算書（単位: 百万円）
 | 年度 | 売上高 | 営業利益 | 当期利益 | 営業利益率 |
 |------|--------|----------|----------|------------|"""
         
         # 損益データの追加
-        income_statements = financial_data.get('income_statement', [])
         for stmt in income_statements[-5:]:  # 直近5年
             year = stmt.get('year', '-')
             revenue = stmt.get('revenue', 0)

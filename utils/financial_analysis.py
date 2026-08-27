@@ -77,13 +77,9 @@ class FinancialAnalyzer:
         equity_ratio = latest_balance['total_equity'] / latest_balance['total_assets']
         current_ratio = latest_balance['current_assets'] / latest_balance['current_liabilities']
         
-        # 流動性分析
-        quick_ratio = self._calculate_quick_ratio(latest_balance)
-        cash_ratio = self._calculate_cash_ratio(latest_balance)
         
         # レバレッジ分析
         debt_to_equity = latest_balance['total_debt'] / latest_balance['total_equity']
-        interest_coverage = self._calculate_interest_coverage(latest_balance, latest_cf)
         
         # 財務健全性スコア
         health_score = self._calculate_health_score(
@@ -94,18 +90,15 @@ class FinancialAnalyzer:
             "safety_metrics": {
                 "debt_ratio": debt_ratio,
                 "equity_ratio": equity_ratio,
-                "current_ratio": current_ratio,
-                "quick_ratio": quick_ratio,
-                "cash_ratio": cash_ratio
+                "current_ratio": current_ratio
             },
             "leverage_metrics": {
-                "debt_to_equity": debt_to_equity,
-                "interest_coverage": interest_coverage
+                "debt_to_equity": debt_to_equity
             },
             "analysis": {
                 "health_score": health_score,
                 "financial_strength": self._assess_financial_strength(health_score),
-                "liquidity_assessment": self._assess_liquidity(current_ratio, quick_ratio),
+                "liquidity_assessment": self._assess_liquidity(current_ratio),
                 "leverage_assessment": self._assess_leverage(debt_to_equity)
             }
         }
@@ -178,8 +171,6 @@ class FinancialAnalyzer:
         # 効率性指標
         asset_turnover = latest_income['revenue'] / latest_balance['total_assets']
         equity_turnover = latest_income['revenue'] / latest_balance['total_equity']
-        inventory_turnover = self._calculate_inventory_turnover(latest_income, latest_balance)
-        receivables_turnover = self._calculate_receivables_turnover(latest_income, latest_balance)
         
         # 運転資本効率
         working_capital = latest_balance['current_assets'] - latest_balance['current_liabilities']
@@ -192,15 +183,11 @@ class FinancialAnalyzer:
             "efficiency_metrics": {
                 "asset_turnover": asset_turnover,
                 "equity_turnover": equity_turnover,
-                "inventory_turnover": inventory_turnover,
-                "receivables_turnover": receivables_turnover,
                 "working_capital_turnover": working_capital_turnover
             },
             "dupont_analysis": dupont_analysis,
             "analysis": {
-                "efficiency_score": self._calculate_efficiency_score(
-                    asset_turnover, inventory_turnover, receivables_turnover
-                ),
+                "efficiency_score": self._calculate_efficiency_score(asset_turnover),
                 "asset_utilization": self._assess_asset_utilization(asset_turnover),
                 "working_capital_management": self._assess_working_capital_management(
                     working_capital_turnover
@@ -208,59 +195,6 @@ class FinancialAnalyzer:
             }
         }
     
-    def calculate_valuation_metrics(self, financial_data: Dict[str, Any], 
-                                  market_data: Dict[str, Any] = None) -> Dict[str, Any]:
-        """バリュエーション分析"""
-        income_statements = financial_data.get('income_statement', [])
-        balance_sheets = financial_data.get('balance_sheet', [])
-        
-        if not income_statements or not balance_sheets:
-            return {"error": "バリュエーション分析には財務データが必要です"}
-        
-        latest_income = income_statements[-1]
-        latest_balance = balance_sheets[-1]
-        
-        # 仮想的な市場データ（実際の実装では外部データを取得）
-        if not market_data:
-            market_data = {
-                "market_cap": 10000000,  # 1兆円
-                "share_price": 3000,
-                "shares_outstanding": 3333333,
-                "enterprise_value": 10500000  # 1.05兆円
-            }
-        
-        # バリュエーション指標
-        eps = latest_income['net_profit'] / market_data['shares_outstanding']
-        bps = latest_balance['total_equity'] / market_data['shares_outstanding']
-        
-        per = market_data['share_price'] / eps if eps > 0 else 0
-        pbr = market_data['share_price'] / bps if bps > 0 else 0
-        
-        # EBITDA推定（簡易計算）
-        ebitda = latest_income['operating_profit'] * 1.2  # 概算
-        ev_ebitda = market_data['enterprise_value'] / ebitda if ebitda > 0 else 0
-        
-        # 配当利回り（仮想）
-        dividend_yield = 0.025  # 2.5%と仮定
-        
-        return {
-            "valuation_metrics": {
-                "per": per,
-                "pbr": pbr,
-                "ev_ebitda": ev_ebitda,
-                "dividend_yield": dividend_yield,
-                "eps": eps,
-                "bps": bps
-            },
-            "market_data": market_data,
-            "analysis": {
-                "valuation_assessment": self._assess_valuation(per, pbr, ev_ebitda),
-                "relative_valuation": self._compare_valuation_to_peers(per, pbr),
-                "investment_attractiveness": self._assess_investment_attractiveness(
-                    per, pbr, dividend_yield
-                )
-            }
-        }
     
     def comprehensive_analysis(self, financial_data: Dict[str, Any],
                                sector: str = None) -> Dict[str, Any]:
@@ -273,7 +207,6 @@ class FinancialAnalyzer:
         health = self.analyze_financial_health(financial_data)
         growth = self.analyze_growth(financial_data)
         efficiency = self.analyze_efficiency(financial_data)
-        valuation = self.calculate_valuation_metrics(financial_data)
 
         overall_score = self._calculate_overall_score(
             profitability, health, growth, efficiency
@@ -284,7 +217,6 @@ class FinancialAnalyzer:
             "financial_health": health,
             "growth": growth,
             "efficiency": efficiency,
-            "valuation": valuation,
             "overall_analysis": {
                 "overall_score": overall_score,
                 "key_strengths": self._identify_key_strengths(
@@ -304,15 +236,18 @@ class FinancialAnalyzer:
         return nopat / invested_capital if invested_capital > 0 else 0
     
     def _calculate_cagr(self, values: List[float]) -> float:
-        """年平均成長率（CAGR）計算"""
-        if len(values) < 2 or values[0] <= 0:
-            return 0
-        
+        """年平均成長率（CAGR）。
+
+        初期値・終端値のどちらかが 0 以下だと定義できないので 0 を返す
+        （負の利益から正へ転じた場合などは、成長率で語れない）。
+        """
+        if len(values) < 2:
+            return 0.0
+        start, end = values[0], values[-1]
+        if start is None or end is None or start <= 0 or end <= 0:
+            return 0.0
         years = len(values) - 1
-        ending_value = values[-1]
-        beginning_value = values[0]
-        
-        return (ending_value / beginning_value) ** (1/years) - 1
+        return ((end / start) ** (1 / years) - 1) * 100
     
     def _calculate_yoy_growth(self, statements: List[Dict]) -> Dict[str, float]:
         """前年同期比成長率計算"""
@@ -356,32 +291,10 @@ class FinancialAnalyzer:
             "roe_dupont": roe_dupont
         }
     
-    def _calculate_quick_ratio(self, balance: Dict) -> float:
-        """当座比率計算（簡易版）"""
-        quick_assets = balance['current_assets'] * 0.8  # 概算
-        return quick_assets / balance['current_liabilities']
     
-    def _calculate_cash_ratio(self, balance: Dict) -> float:
-        """現金比率計算（簡易版）"""
-        cash_equivalents = balance['current_assets'] * 0.3  # 概算
-        return cash_equivalents / balance['current_liabilities']
     
-    def _calculate_interest_coverage(self, balance: Dict, cash_flow: Dict) -> float:
-        """利息カバレッジ比率（簡易版）"""
-        operating_cf = cash_flow.get('operating_cf', 0)
-        estimated_interest = balance['long_term_debt'] * 0.02  # 金利2%と仮定
-        return operating_cf / estimated_interest if estimated_interest > 0 else 0
     
-    def _calculate_inventory_turnover(self, income: Dict, balance: Dict) -> float:
-        """棚卸資産回転率（簡易版）"""
-        inventory = balance['current_assets'] * 0.3  # 概算
-        cogs = income['revenue'] * 0.7  # 売上原価概算
-        return cogs / inventory if inventory > 0 else 0
     
-    def _calculate_receivables_turnover(self, income: Dict, balance: Dict) -> float:
-        """売掛金回転率（簡易版）"""
-        receivables = balance['current_assets'] * 0.4  # 概算
-        return income['revenue'] / receivables if receivables > 0 else 0
     
     # スコア計算・評価メソッド
     def _calculate_profitability_score(self, operating_margin: float, 
@@ -407,15 +320,12 @@ class FinancialAnalyzer:
         
         return debt_score + current_score + equity_score
     
-    def _calculate_efficiency_score(self, asset_turnover: float,
-                                  inventory_turnover: float, 
-                                  receivables_turnover: float) -> float:
-        """効率性スコア計算（100点満点）"""
-        asset_score = min(asset_turnover * 40, 40)
-        inventory_score = min(inventory_turnover * 5, 30)
-        receivables_score = min(receivables_turnover * 3, 30)
-        
-        return asset_score + inventory_score + receivables_score
+    def _calculate_efficiency_score(self, asset_turnover: float) -> float:
+        """効率性スコア（100点満点）。
+
+        棚卸資産・売掛金の内訳は取得元に無いため、総資産回転率だけで評価する。
+        """
+        return min(asset_turnover * 100, 100)
     
     def _calculate_overall_score(self, profitability: Dict, health: Dict,
                                growth: Dict, efficiency: Dict) -> float:
@@ -558,72 +468,17 @@ class FinancialAnalyzer:
         }
     
     
-    def _assess_valuation(self, per: float, pbr: float, ev_ebitda: float) -> str:
-        """バリュエーション評価"""
-        if per < 10 and pbr < 1.0:
-            return "割安"
-        elif per < 15 and pbr < 1.5:
-            return "やや割安"
-        elif per < 25 and pbr < 2.5:
-            return "適正"
-        elif per < 35 and pbr < 4.0:
-            return "やや割高"
-        else:
-            return "割高"
     
-    def _compare_valuation_to_peers(self, per: float, pbr: float) -> Dict[str, str]:
-        """同業他社比較（簡易版）"""
-        # 仮想的な同業他社平均
-        peer_per = 18.5
-        peer_pbr = 1.8
-        
-        per_comparison = "above" if per > peer_per else "below"
-        pbr_comparison = "above" if pbr > peer_pbr else "below"
-        
-        return {
-            "per_vs_peers": per_comparison,
-            "pbr_vs_peers": pbr_comparison,
-            "peer_per": peer_per,
-            "peer_pbr": peer_pbr
-        }
     
-    def _assess_investment_attractiveness(self, per: float, pbr: float, 
-                                        dividend_yield: float) -> str:
-        """投資魅力度評価"""
-        score = 0
-        
-        # PER評価
-        if per < 15:
-            score += 2
-        elif per < 25:
-            score += 1
-        
-        # PBR評価
-        if pbr < 1.5:
-            score += 2
-        elif pbr < 2.5:
-            score += 1
-        
-        # 配当利回り評価
-        if dividend_yield > 0.03:
-            score += 2
-        elif dividend_yield > 0.02:
-            score += 1
-        
-        if score >= 5:
-            return "非常に魅力的"
-        elif score >= 3:
-            return "魅力的"
-        elif score >= 2:
-            return "普通"
-        else:
-            return "魅力に欠ける"
     
-    def _assess_liquidity(self, current_ratio: float, quick_ratio: float) -> str:
-        """流動性評価"""
-        if current_ratio > 1.5 and quick_ratio > 1.0:
+    def _assess_liquidity(self, current_ratio: float) -> str:
+        """流動性評価。
+
+        当座比率は棚卸資産の内訳が取得元に無いため算出せず、流動比率だけで見る。
+        """
+        if current_ratio > 1.5:
             return "良好"
-        elif current_ratio > 1.2 and quick_ratio > 0.8:
+        elif current_ratio > 1.2:
             return "普通"
         else:
             return "要注意"

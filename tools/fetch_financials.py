@@ -27,6 +27,8 @@ TARGETS = {
 MILLION = 1000000
 # 最終利益と継続事業利益がこの割合以上ずれたら継続事業ベースを採用する
 DISCONTINUED_THRESHOLD = 0.05
+# 総資産がこの割合以上動いたら構造変化として注記する
+BALANCE_SHEET_THRESHOLD = 0.30
 
 
 def pick(df, *names):
@@ -80,7 +82,10 @@ def build(code):
     notes = []
 
     revenue_s = pick(inc, "Total Revenue", "Operating Revenue")
-    op_s = pick(inc, "Operating Income", "Total Operating Income As Reported")
+    # 営業利益は "As Reported"（各社の開示値）を優先する。
+    # "Operating Income" は yfinance 側の正規化値で、開示値と数%ずれる
+    # （例: NTT 2026年3月期 開示 1,706,221 に対し正規化値 1,786,410）。
+    op_s = pick(inc, "Total Operating Income As Reported", "Operating Income")
     reported_s = pick(inc, "Net Income", "Net Income Common Stockholders")
     continuing_s = pick(inc, "Net Income From Continuing Operation Net Minority Interest",
                         "Net Income Continuous Operations")
@@ -183,6 +188,22 @@ def build(code):
             "current_ratio": ratio(bs_row["current_assets"], bs_row["current_liabilities"]),
             "equity_ratio": ratio(bs_row["total_equity"], bs_row["total_assets"]),
         })
+
+    # 貸借対照表の急変を検知する（事業の分離・取得、会計基準の変更など）。
+    # 損益側には非継続事業の検知があるが、BS 側にも同種の断絶が起きる。
+    for i in range(1, len(data["balance_sheet"])):
+        prev_assets = data["balance_sheet"][i - 1].get("total_assets")
+        curr_assets = data["balance_sheet"][i].get("total_assets")
+        if not prev_assets or not curr_assets:
+            continue
+        change = (curr_assets - prev_assets) / abs(prev_assets)
+        if abs(change) > BALANCE_SHEET_THRESHOLD:
+            notes.append(
+                "%s期は総資産が前期比 %+.0f%%（%s → %s百万円）と大きく動いている。"
+                "事業の分離・取得や会計基準の変更が含まれる可能性があり、"
+                "自己資本比率や資産効率の推移をそのまま比較できない"
+                % (data["fiscal_period_end"][i][:7], change * 100,
+                   format(prev_assets, ","), format(curr_assets, ",")))
 
     # 売上が空の期は分析に使えないので落とす（落としたことは notes に残す）
     keep = [i for i, row in enumerate(data["income_statement"]) if row["revenue"] is not None]

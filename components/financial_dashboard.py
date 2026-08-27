@@ -37,9 +37,6 @@ class FinancialDashboard:
         
         self._display_efficiency_metrics()
         
-        st.markdown("---")
-        
-        self._display_valuation_metrics()
     
     def _display_summary_metrics(self):
         """主要指標サマリーを表示"""
@@ -122,8 +119,7 @@ class FinancialDashboard:
                 f"{latest_metrics.get('net_margin', 0) * 100:.1f}%",
                 f"{latest_metrics.get('roe', 0) * 100:.1f}%",
                 f"{latest_metrics.get('roa', 0) * 100:.1f}%"
-            ],
-            "業界比較": ["良好", "良好", "普通", "良好", "普通"]  # サンプル
+            ]
         }
         
         df_metrics = pd.DataFrame(metrics_data)
@@ -155,14 +151,12 @@ class FinancialDashboard:
         
         # 安全性指標
         safety_data = {
-            "指標": ["自己資本比率", "流動比率", "当座比率", "負債比率"],
+            "指標": ["自己資本比率", "流動比率", "負債比率（有利子負債 / 総資産）"],
             "値": [
                 f"{safety_metrics.get('equity_ratio', 0) * 100:.1f}%",
                 f"{safety_metrics.get('current_ratio', 0):.1f}",
-                f"{safety_metrics.get('quick_ratio', 0):.1f}",
                 f"{safety_metrics.get('debt_ratio', 0) * 100:.1f}%"
-            ],
-            "評価": ["良好", "良好", "普通", "良好"]  # サンプル
+            ]
         }
         
         df_safety = pd.DataFrame(safety_data)
@@ -275,12 +269,11 @@ class FinancialDashboard:
             st.markdown("**📊 回転率指標**")
             
             turnover_data = {
-                "指標": ["総資産回転率", "自己資本回転率", "棚卸資産回転率", "売掛金回転率"],
+                "指標": ["総資産回転率", "自己資本回転率"],
                 "値": [
                     f"{efficiency_metrics.get('asset_turnover', 0):.2f}回",
                     f"{efficiency_metrics.get('equity_turnover', 0):.2f}回",
-                    f"{efficiency_metrics.get('inventory_turnover', 0):.1f}回",
-                    f"{efficiency_metrics.get('receivables_turnover', 0):.1f}回"
+
                 ]
             }
             
@@ -321,78 +314,6 @@ class FinancialDashboard:
         color = utilization_colors.get(asset_utilization, "⚪")
         st.markdown(f"**資産活用度**: {color} {asset_utilization}")
     
-    def _display_valuation_metrics(self):
-        """バリュエーション指標を表示"""
-        st.subheader("💎 バリュエーション")
-        
-        valuation = self.analysis_results.get('valuation', {})
-        valuation_metrics = valuation.get('valuation_metrics', {})
-        market_data = valuation.get('market_data', {})
-        
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            # バリュエーション指標
-            st.markdown("**📈 株式指標**")
-            
-            valuation_data = {
-                "指標": ["PER", "PBR", "EV/EBITDA", "配当利回り"],
-                "値": [
-                    f"{valuation_metrics.get('per', 0):.1f}倍",
-                    f"{valuation_metrics.get('pbr', 0):.1f}倍", 
-                    f"{valuation_metrics.get('ev_ebitda', 0):.1f}倍",
-                    f"{valuation_metrics.get('dividend_yield', 0) * 100:.1f}%"
-                ]
-            }
-            
-            df_valuation = pd.DataFrame(valuation_data)
-            st.dataframe(df_valuation, use_container_width=True)
-        
-        with col2:
-            # 市場データ
-            st.markdown("**💰 市場データ**")
-            
-            market_cap = market_data.get('market_cap', 0)
-            share_price = market_data.get('share_price', 0)
-            eps = valuation_metrics.get('eps', 0)
-            bps = valuation_metrics.get('bps', 0)
-            
-            market_info = {
-                "項目": ["時価総額", "株価", "EPS", "BPS"],
-                "値": [
-                    f"{market_cap / 1000000:.1f}兆円",
-                    f"{share_price:,.0f}円",
-                    f"{eps:.0f}円",
-                    f"{bps:.0f}円"
-                ]
-            }
-            
-            df_market = pd.DataFrame(market_info)
-            st.dataframe(df_market, use_container_width=True)
-        
-        # バリュエーション評価
-        valuation_assessment = valuation.get('analysis', {}).get('valuation_assessment', '適正')
-        
-        assessment_colors = {
-            "割安": "🟢",
-            "やや割安": "🔵",
-            "適正": "🟡",
-            "やや割高": "🟠",
-            "割高": "🔴"
-        }
-        color = assessment_colors.get(valuation_assessment, "⚪")
-        st.markdown(f"**バリュエーション評価**: {color} {valuation_assessment}")
-        
-        # 投資魅力度
-        investment_attractiveness = valuation.get('analysis', {}).get('investment_attractiveness', '普通')
-        attractiveness_colors = {
-            "非常に魅力的": "🟢",
-            "魅力的": "🔵", 
-            "普通": "🟡",
-            "魅力に欠ける": "🔴"
-        }
-        color = attractiveness_colors.get(investment_attractiveness, "⚪")
-        st.markdown(f"**投資魅力度**: {color} {investment_attractiveness}")
     
     def _get_latest_growth_rate(self, metric: str) -> float:
         """最新の成長率を取得"""

@@ -92,7 +92,7 @@ def setup_sidebar():
             search_input = st.text_input(
                 f"{search_method}を入力",
                 placeholder="例: ソニーグループ, 味の素",
-                help=f"{search_method}を入力してください"
+                help=f"{search_method}での検索は収録企業のみ対応します。収録外は証券コードで検索してください"
             )
         
         # 検索ボタン
@@ -138,7 +138,7 @@ def setup_sidebar():
         
         analysis_period = st.selectbox(
             "分析期間",
-            ["過去3年", "過去5年", "過去10年"],
+            ["過去3年", "過去5年"],
             index=1
         )
         
@@ -193,10 +193,10 @@ def search_company(search_input, search_method):
         st.error(f"❌ エラーが発生しました: {str(e)}")
 
 def get_periods_from_setting():
+    # Yahoo! Finance の年次データは概ね4期分なので、それ以上を選べるようにしない
     period_map = {
         "過去3年": 3,
-        "過去5年": 5,
-        "過去10年": 10
+        "過去5年": 5
     }
     return period_map.get(st.session_state.get('analysis_period', '過去5年'), 5)
 

@@ -14,6 +14,36 @@ class FinancialAnalyzer:
         # 業界平均との比較は行わない（出典を示せる業界平均値を持っていないため）
         pass
     
+    @staticmethod
+    def _div(numerator, denominator, default=0.0):
+        """None や 0 を含む割り算を安全に行う。
+
+        取得元にデータが無い項目があっても分析全体が落ちないようにするための防御。
+        """
+        if numerator is None or denominator in (None, 0):
+            return default
+        return numerator / denominator
+
+    @staticmethod
+    def _ratio_of(financial_data, key, default=0.0):
+        """最新期の比率を読む。
+
+        ROE・ROA・負債比率などは tools/fetch_financials.py が算出済み。
+        同じ式をここにも書くと、片方だけ直したときに食い違うので読むだけにする。
+        """
+        ratios = financial_data.get('ratios') or []
+        if not ratios:
+            return default
+        value = ratios[-1].get(key)
+        return default if value is None else value
+
+    @staticmethod
+    def _growth(current, previous, default=0.0):
+        """前期比の増減率。計算できないときは default を返す。"""
+        if current is None or previous in (None, 0):
+            return default
+        return (current - previous) / abs(previous)
+
     def analyze_profitability(self, financial_data: Dict[str, Any]) -> Dict[str, Any]:
         """収益性分析"""
         income_statements = financial_data.get('income_statement', [])
@@ -31,9 +61,9 @@ class FinancialAnalyzer:
         operating_margin = latest_income.get('operating_margin', 0)
         net_margin = latest_income.get('net_margin', 0)
         
-        roe = latest_income['net_profit'] / latest_balance['total_equity']
-        roa = latest_income['net_profit'] / latest_balance['total_assets']
-        roic = self._calculate_roic(latest_income, latest_balance)
+        # 比率は取得時に算出済みのものを読む（式を二重に持たない）
+        roe = self._ratio_of(financial_data, 'roe')
+        roa = self._ratio_of(financial_data, 'roa')
         
         # 収益性トレンド分析
         margin_trend = self._analyze_margin_trend(income_statements)
@@ -45,8 +75,7 @@ class FinancialAnalyzer:
                 "operating_margin": operating_margin,
                 "net_margin": net_margin,
                 "roe": roe,
-                "roa": roa,
-                "roic": roic
+                "roa": roa
             },
             "trends": {
                 "margin_trend": margin_trend,
@@ -73,13 +102,13 @@ class FinancialAnalyzer:
         latest_cf = cash_flows[-1] if cash_flows else {}
         
         # 安全性指標
-        debt_ratio = latest_balance['total_debt'] / latest_balance['total_assets']
-        equity_ratio = latest_balance['total_equity'] / latest_balance['total_assets']
-        current_ratio = latest_balance['current_assets'] / latest_balance['current_liabilities']
+        debt_ratio = self._ratio_of(financial_data, 'debt_ratio')
+        equity_ratio = self._ratio_of(financial_data, 'equity_ratio')
+        current_ratio = self._ratio_of(financial_data, 'current_ratio')
         
         
         # レバレッジ分析
-        debt_to_equity = latest_balance['total_debt'] / latest_balance['total_equity']
+        debt_to_equity = self._div(latest_balance.get('total_debt'), latest_balance.get('total_equity'))
         
         # 財務健全性スコア
         health_score = self._calculate_health_score(
@@ -169,12 +198,17 @@ class FinancialAnalyzer:
         latest_balance = balance_sheets[-1]
         
         # 効率性指標
-        asset_turnover = latest_income['revenue'] / latest_balance['total_assets']
-        equity_turnover = latest_income['revenue'] / latest_balance['total_equity']
+        asset_turnover = self._div(latest_income.get('revenue'), latest_balance.get('total_assets'))
+        equity_turnover = self._div(latest_income.get('revenue'), latest_balance.get('total_equity'))
         
         # 運転資本効率
-        working_capital = latest_balance['current_assets'] - latest_balance['current_liabilities']
-        working_capital_turnover = latest_income['revenue'] / working_capital if working_capital > 0 else 0
+        current_assets = latest_balance.get('current_assets')
+        current_liabilities = latest_balance.get('current_liabilities')
+        if current_assets is None or current_liabilities is None:
+            working_capital = 0
+        else:
+            working_capital = current_assets - current_liabilities
+        working_capital_turnover = self._div(latest_income.get('revenue'), working_capital if working_capital > 0 else None)
         
         # DuPont分析
         dupont_analysis = self._dupont_analysis(latest_income, latest_balance)
@@ -229,11 +263,6 @@ class FinancialAnalyzer:
         }
     
     # 内部計算メソッド
-    def _calculate_roic(self, income: Dict, balance: Dict) -> float:
-        """ROIC（投下資本利益率）計算"""
-        nopat = income['operating_profit'] * 0.7  # 税引後営業利益（概算）
-        invested_capital = balance['total_assets'] - balance['current_liabilities']
-        return nopat / invested_capital if invested_capital > 0 else 0
     
     def _calculate_cagr(self, values: List[float]) -> float:
         """年平均成長率（CAGR）。
@@ -258,29 +287,30 @@ class FinancialAnalyzer:
         previous = statements[-2]
         
         return {
-            "revenue_growth": (current['revenue'] - previous['revenue']) / previous['revenue'],
-            "profit_growth": (current['net_profit'] - previous['net_profit']) / previous['net_profit'] if previous['net_profit'] != 0 else 0,
-            "operating_profit_growth": (current['operating_profit'] - previous['operating_profit']) / previous['operating_profit'] if previous['operating_profit'] != 0 else 0
+            "revenue_growth": self._growth(current.get('revenue'), previous.get('revenue')),
+            "profit_growth": self._growth(current.get('net_profit'), previous.get('net_profit')),
+            "operating_profit_growth": self._growth(current.get('operating_profit'), previous.get('operating_profit'))
         }
     
     def _calculate_growth_volatility(self, values: List[float]) -> float:
         """成長率のボラティリティ計算"""
+        values = [v for v in values if v is not None]
         if len(values) < 3:
             return 0
         
         growth_rates = []
         for i in range(1, len(values)):
-            if values[i-1] > 0:
-                growth_rate = (values[i] - values[i-1]) / values[i-1]
+            if values[i-1] is not None and values[i-1] > 0:
+                growth_rate = self._growth(values[i], values[i-1])
                 growth_rates.append(growth_rate)
         
         return statistics.stdev(growth_rates) if len(growth_rates) > 1 else 0
     
     def _dupont_analysis(self, income: Dict, balance: Dict) -> Dict[str, float]:
         """DuPont分析"""
-        net_margin = income['net_profit'] / income['revenue']
-        asset_turnover = income['revenue'] / balance['total_assets']
-        equity_multiplier = balance['total_assets'] / balance['total_equity']
+        net_margin = self._div(income.get('net_profit'), income.get('revenue'))
+        asset_turnover = self._div(income.get('revenue'), balance.get('total_assets'))
+        equity_multiplier = self._div(balance.get('total_assets'), balance.get('total_equity'))
         
         roe_dupont = net_margin * asset_turnover * equity_multiplier
         
@@ -450,7 +480,7 @@ class FinancialAnalyzer:
         roes = []
         for i in range(len(income_statements)):
             if i < len(balance_sheets):
-                roe = income_statements[i]['net_profit'] / balance_sheets[i]['total_equity']
+                roe = self._div(income_statements[i].get('net_profit'), balance_sheets[i].get('total_equity'))
                 roes.append(roe)
         
         if len(roes) < 2:
@@ -530,8 +560,8 @@ class FinancialAnalyzer:
         
         growth_rates = []
         for i in range(1, len(revenues)):
-            if revenues[i-1] > 0:
-                growth_rate = (revenues[i] - revenues[i-1]) / revenues[i-1]
+            if revenues[i-1] is not None and revenues[i-1] > 0:
+                growth_rate = self._growth(revenues[i], revenues[i-1])
                 growth_rates.append(growth_rate)
         
         if not growth_rates:
@@ -539,7 +569,7 @@ class FinancialAnalyzer:
         
         # 負の成長率の割合
         negative_count = sum(1 for rate in growth_rates if rate < 0)
-        negative_ratio = negative_count / len(growth_rates)
+        negative_ratio = self._div(negative_count, len(growth_rates))
         
         if negative_ratio == 0:
             return "一貫して成長"

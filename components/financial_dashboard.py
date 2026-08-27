@@ -47,7 +47,8 @@ class FinancialDashboard:
         latest_balance = self.financial_data.get('balance_sheet', [])[-1] if self.financial_data.get('balance_sheet') else {}
         
         # 主要指標を表示
-        col1, col2, col3, col4, col5 = st.columns(5)
+        # 5列だと本番の幅で数値もラベルも省略されるため 3列 + 2列に分ける
+        col1, col2, col3 = st.columns(3)
         
         with col1:
             revenue = latest_income.get('revenue', 0)
@@ -77,6 +78,8 @@ class FinancialDashboard:
                 help="営業利益/売上高"
             )
         
+        col4, col5 = st.columns(2)
+
         with col4:
             profitability = self.analysis_results.get('profitability', {})
             roe = profitability.get('latest_metrics', {}).get('roe', 0)
@@ -123,7 +126,7 @@ class FinancialDashboard:
         }
         
         df_metrics = pd.DataFrame(metrics_data)
-        st.dataframe(df_metrics, use_container_width=True)
+        st.dataframe(df_metrics, use_container_width=True, hide_index=True)
         
         # 収益性スコア
         profitability_score = profitability.get('analysis', {}).get('profitability_score', 0)
@@ -151,7 +154,7 @@ class FinancialDashboard:
         
         # 安全性指標
         safety_data = {
-            "指標": ["自己資本比率", "流動比率", "負債比率（有利子負債 / 総資産）"],
+            "指標": ["自己資本比率", "流動比率", "負債比率"],
             "値": [
                 f"{safety_metrics.get('equity_ratio', 0) * 100:.1f}%",
                 f"{safety_metrics.get('current_ratio', 0):.1f}",
@@ -160,7 +163,7 @@ class FinancialDashboard:
         }
         
         df_safety = pd.DataFrame(safety_data)
-        st.dataframe(df_safety, use_container_width=True)
+        st.dataframe(df_safety, use_container_width=True, hide_index=True)
         
         # 財務健全性スコア
         health_score = health.get('analysis', {}).get('health_score', 0)
@@ -278,7 +281,7 @@ class FinancialDashboard:
             }
             
             df_turnover = pd.DataFrame(turnover_data)
-            st.dataframe(df_turnover, use_container_width=True)
+            st.dataframe(df_turnover, use_container_width=True, hide_index=True)
         
         with col2:
             # DuPont分析
@@ -297,7 +300,7 @@ class FinancialDashboard:
             }
             
             df_dupont = pd.DataFrame(dupont_data)
-            st.dataframe(df_dupont, use_container_width=True)
+            st.dataframe(df_dupont, use_container_width=True, hide_index=True)
         
         # 効率性スコア
         efficiency_score = efficiency.get('analysis', {}).get('efficiency_score', 0)

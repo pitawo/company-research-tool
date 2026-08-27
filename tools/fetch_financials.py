@@ -166,17 +166,31 @@ def build(code):
             "long_term_debt": ltd,
         })
 
+    estimated_fcf_years = []
     for c in cols:
         ocf, icf = val(ocf_s, c), val(icf_s, c)
         free = val(free_s, c)
+        # フリーキャッシュフローが取れない期は 営業CF＋投資CF で代用する。
+        # 投資CF には買収・売却なども含まれるので、厳密な FCF とはずれる。
+        # 代用したことは記録して画面にも出す。
+        is_estimate = free is None and ocf is not None and icf is not None
+        if is_estimate:
+            free = ocf + icf
+            estimated_fcf_years.append(c.year)
         data["cash_flow"].append({
             "year": c.year,
             "operating_cf": ocf,
             "investing_cf": icf,
             "financing_cf": val(fcf_s, c),
-            "free_cf": free if free is not None else (
-                (ocf + icf) if (ocf is not None and icf is not None) else None),
+            "free_cf": free,
+            "free_cf_is_estimate": is_estimate,
         })
+
+    if estimated_fcf_years:
+        notes.append(
+            "フリーキャッシュフローを取得できなかった期（%s）は「営業CF＋投資CF」で代用している。"
+            "投資CF には買収・売却なども含まれるため、厳密なフリーキャッシュフローとはずれる"
+            % "／".join("%d年" % y for y in estimated_fcf_years))
 
     for i, c in enumerate(cols):
         inc_row, bs_row = data["income_statement"][i], data["balance_sheet"][i]

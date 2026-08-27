@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27 12:36:31 JST",
+  "generated_at": "2026-08-27 16:13:23 JST",
   "source": "Yahoo! Finance（yfinance 経由で取得）",
   "unit": "百万円",
   "disclaimer": "本ツールの数値は Yahoo! Finance の公開データを取得したものであり、各社の有価証券報告書と完全に一致することを保証しない。投資判断には使用しないこと。",
@@ -14,7 +14,7 @@
       "website": "https://group.ntt",
       "headquarters": "Chiyoda",
       "business_description": "NTT, Inc. operates as a telecommunications company in Japan and internationally. The company operates through the Comprehensive ICT Business, Regional Communications Business, Global Solutions Business, and Others segments. Its Comprehensive ICT Business segment offers mobile phone and fiber-optic broadband services; financial, content, and lifestyle services; and corporate communication services and solutions. This segment also engages in engineering, system development, and related businesses. The Regional Communications Business segment provides optical fiber services, corporate services, fixed-line telephone services, and related businesses. Its Global Solutions Business segment offers consulting, IT solutions, system and software development, and maintenance services. This segment is involved in port operations, data center operations, and related businesses. Its Others segment engages in real estate and construction, energy, and other businesses. The company was formerly known as Nippon Telegraph and Telephone Corporation and changed its name to NTT, Inc. in July 2025. NTT, Inc. was founded in 1952 and is headquartered in Chiyoda, Japan.",
-      "market_cap": 13609625
+      "market_cap": 13658346
     },
     "9843": {
       "name": "ニトリホールディングス",
@@ -26,7 +26,7 @@
       "website": "https://www.nitorihd.co.jp",
       "headquarters": "Tokyo",
       "business_description": "Nitori Holdings Co., Ltd. engages in sales furniture and interior goods in Japan. It is involved in advertising and public relations support; logistics; and other activities. The company engages in insurance agency and clothing related, as well as information system and digital base businesses. Nitori Holdings Co., Ltd. was founded in 1967 and is headquartered in Tokyo, Japan.",
-      "market_cap": 1745462
+      "market_cap": 1731336
     },
     "4661": {
       "name": "オリエンタルランド",
@@ -50,7 +50,7 @@
       "website": "https://www.ajinomoto.co.jp",
       "headquarters": "Tokyo",
       "business_description": "Ajinomoto Co., Inc. engages in the seasonings and foods, frozen foods, and healthcare and other businesses in Japan and internationally. The company operates through three segments: Seasonings and Foods; Frozen Foods; and Healthcare, etc. The Seasonings and Foods segment offers sauces and seasoning products under the AJI-NO-MOTO, HON-DASHI, Cook Do, Ajinomoto KK Consommé, Pure Select Mayonnaise, Ros Dee, Masako, Aji-ngon, Sazón, Sajiku, and CRISPY FRY names. This segment also provides instant noodles under the Knorr Cup Soup and YumYum names; coffee beverages under the Birdy and Blendy brands; powdered drink under the Birdy 3in1 name; MAXIM brand products; A Little Luxury Coffee Shop brand products and various gifts, office drinks, cup vending machines, and tea dispensers, etc. The Frozen Foods segment offers Gyoza dumplings, rice dishes, noodles, sweets, shumai, processed chicken, and other products. The Healthcare, etc segment provides amino acids for applications in various industries, such as pharmaceuticals and foods; contract development and manufacturing services for pharmaceutical intermediates and active ingredients, and sterile preparations. This segment also offers Ajinomoto Build-up Film, an interlayer insulating material for semiconductor packages; functional materials under the Plainset names; AFTINNOVA, such as activated carbon, release paper, etc.; feed amino acids, sports nutrition under the brand Aminovital, personal care materials under the brand Amisoft, amino acid-based makeup oil under the brand Eldew, and powder under the brand Amihope, medical foods, and agricultural services, etc. Ajinomoto Co., Inc. was founded in 1909 and is headquartered in Tokyo, Japan.",
-      "market_cap": 5177567
+      "market_cap": 5187100
     },
     "6758": {
       "name": "ソニーグループ",
@@ -62,7 +62,7 @@
       "website": "https://www.sony.com",
       "headquarters": "Tokyo",
       "business_description": "Sony Group Corporation develops, designs, produces, manufactures, supplies, and sells electronic equipment, instruments, and devices for consumer, professional, and industrial use in Japan, the United States, Europe, China, the Asia-Pacific, and internationally. The company operates through Game & Network Services, Music, Pictures, Entertainment Technology & Services, and Imaging & Sensing Solutions. It develops, designs, produces, manufactures, provides, and sells smartphones and image sensors; plans, produces, manufactures, and sells music software, performances and merchandise, song lyrics and music management, licensing, animation works, and game applications. The company is also involved in the production, acquisition, sale, and distribution of motion pictures and television programs; operates television networks and direct-to-consumer distribution services; insurance business, including life insurance and non-life insurance; internet banking; production and sale of digital software add-on content; manufacturing and sales of home video game consoles; and interchangeable lens, projectors, and medical equipment. It has a strategic partnership with TCL Electronics Holdings Limited in the home entertainment sector; and a non-binding memorandum of understanding with Taiwan Semiconductor Manufacturing Company Limited for a strategic partnership regarding the development and manufacturing of image sensors. The company was formerly known as Sony Corporation and changed its name to Sony Group Corporation in April 2021. Sony Group Corporation was incorporated in 1946 and is headquartered in Tokyo, Japan.",
-      "market_cap": 22718621
+      "market_cap": 22654228
     }
   },
   "financials": {
@@ -173,28 +173,32 @@
           "operating_cf": 2261013,
           "investing_cf": -1736912,
           "financing_cf": -590197,
-          "free_cf": 409134
+          "free_cf": 409134,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2024,
           "operating_cf": 2374159,
           "investing_cf": -1989235,
           "financing_cf": -234454,
-          "free_cf": 290155
+          "free_cf": 290155,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2025,
           "operating_cf": 2364031,
           "investing_cf": -1999644,
           "financing_cf": -343027,
-          "free_cf": 231739
+          "free_cf": 231739,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2026,
           "operating_cf": 1485190,
           "investing_cf": -1023424,
           "financing_cf": 441332,
-          "free_cf": -770542
+          "free_cf": -770542,
+          "free_cf_is_estimate": false
         }
       ],
       "ratios": [
@@ -342,28 +346,32 @@
           "operating_cf": 85565,
           "investing_cf": -119980,
           "financing_cf": 17729,
-          "free_cf": -17597
+          "free_cf": -17597,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2024,
           "operating_cf": 181164,
           "investing_cf": -133107,
           "financing_cf": -55378,
-          "free_cf": 53824
+          "free_cf": 53824,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2025,
           "operating_cf": 144384,
           "investing_cf": -127856,
           "financing_cf": 1295,
-          "free_cf": 19076
+          "free_cf": 19076,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2026,
           "operating_cf": 148911,
           "investing_cf": -55103,
           "financing_cf": -86502,
-          "free_cf": 104499
+          "free_cf": 104499,
+          "free_cf_is_estimate": false
         }
       ],
       "ratios": [
@@ -512,28 +520,32 @@
           "operating_cf": 167729,
           "investing_cf": -144426,
           "financing_cf": -10939,
-          "free_cf": 74524
+          "free_cf": 74524,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2024,
           "operating_cf": 197674,
           "investing_cf": -21265,
           "financing_cf": -45625,
-          "free_cf": 144981
+          "free_cf": 144981,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2025,
           "operating_cf": 195388,
           "investing_cf": -253140,
           "financing_cf": -26872,
-          "free_cf": 92691
+          "free_cf": 92691,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2026,
           "operating_cf": 181281,
           "investing_cf": -172096,
           "financing_cf": 38556,
-          "free_cf": 97677
+          "free_cf": 97677,
+          "free_cf_is_estimate": false
         }
       ],
       "ratios": [
@@ -681,28 +693,32 @@
           "operating_cf": 117640,
           "investing_cf": -30087,
           "financing_cf": -111061,
-          "free_cf": 44594
+          "free_cf": 44594,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2024,
           "operating_cf": 168074,
           "investing_cf": -132434,
           "financing_cf": -6753,
-          "free_cf": 96052
+          "free_cf": 96052,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2025,
           "operating_cf": 209898,
           "investing_cf": -77382,
           "financing_cf": -137684,
-          "free_cf": 114808
+          "free_cf": 114808,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2026,
           "operating_cf": null,
           "investing_cf": null,
           "financing_cf": null,
-          "free_cf": null
+          "free_cf": null,
+          "free_cf_is_estimate": false
         }
       ],
       "ratios": [
@@ -850,28 +866,32 @@
           "operating_cf": 314691,
           "investing_cf": -1052664,
           "financing_cf": 84300,
-          "free_cf": -298944
+          "free_cf": -298944,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2024,
           "operating_cf": 1373213,
           "investing_cf": -818886,
           "financing_cf": -210709,
-          "free_cf": 767434
+          "free_cf": 767434,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2025,
           "operating_cf": 2321675,
           "investing_cf": -930120,
           "financing_cf": -298243,
-          "free_cf": 1700690
+          "free_cf": 1700690,
+          "free_cf_is_estimate": false
         },
         {
           "year": 2026,
           "operating_cf": 1945617,
           "investing_cf": -1970542,
           "financing_cf": -842761,
-          "free_cf": 1487936
+          "free_cf": 1487936,
+          "free_cf_is_estimate": false
         }
       ],
       "ratios": [

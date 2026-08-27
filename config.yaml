@@ -1,0 +1,118 @@
+# 企業リサーチシステム設定ファイル
+
+# アプリケーション設定
+app:
+  title: "企業リサーチシステム"
+  version: "1.0.0"
+  description: "日本企業の包括的分析システム"
+  author: "Corporate Research Team"
+
+# データソース設定
+data_sources:
+  # 実データは tools/fetch_financials.py が Yahoo! Finance から取得し
+  # data/financials.json に固める（このアプリは API キーを必要としない）
+  snapshot_path: "data/financials.json"
+
+# 財務分析設定
+financial_analysis:
+  # 分析期間
+  default_periods: 5
+  
+  # 業界ベンチマーク
+  industry_benchmarks:
+    輸送用機器:
+      roe: 0.08
+      roa: 0.04
+      operating_margin: 0.06
+      debt_ratio: 0.65
+      current_ratio: 1.2
+    情報・通信業:
+      roe: 0.12
+      roa: 0.06
+      operating_margin: 0.12
+      debt_ratio: 0.45
+      current_ratio: 1.5
+    電気機器:
+      roe: 0.10
+      roa: 0.05
+      operating_margin: 0.08
+      debt_ratio: 0.55
+      current_ratio: 1.3
+  
+  # スコア重み設定
+  score_weights:
+    profitability: 0.3
+    financial_health: 0.3
+    growth: 0.2
+    efficiency: 0.2
+
+# UI設定
+ui:
+  # ページ設定
+  page_config:
+    page_title: "企業リサーチシステム"
+    page_icon: "📊"
+    layout: "wide"
+    initial_sidebar_state: "expanded"
+  
+  # カラーテーマ
+  colors:
+    primary: "#1f77b4"
+    secondary: "#ff7f0e"
+    success: "#2ca02c"
+    warning: "#d62728"
+    info: "#17becf"
+  
+  # チャート設定
+  charts:
+    default_height: 400
+    color_palette: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+
+# レポート設定
+reports:
+  # 出力設定
+  output:
+    default_format: "markdown"
+    supported_formats: ["markdown", "pdf", "html"]
+    export_path: "exports/"
+  
+  # テンプレート設定
+  templates:
+    comprehensive: "包括的企業分析レポート"
+    executive: "エグゼクティブサマリー"
+    financial: "財務分析レポート"
+    swot: "SWOT分析レポート"
+
+# ログ設定
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
+  max_size_mb: 10
+  backup_count: 5
+
+# セキュリティ設定
+security:
+  # アクセス制御
+  access_control:
+    rate_limit: 100  # requests per minute
+    session_timeout: 3600  # seconds
+
+# パフォーマンス設定
+performance:
+  # メモリ制限
+  memory_limit_mb: 1024
+  
+  # 並行処理
+  max_workers: 4
+  
+  # データ処理
+  chunk_size: 1000
+  batch_size: 100
+
+# デバッグ設定
+debug:
+  enabled: false
+  show_sql: false
+  profile_performance: false
+  log_api_calls: false

@@ -1,0 +1,916 @@
+{
+  "generated_at": "2026-08-27 12:13:21 JST",
+  "source": "Yahoo! Finance（yfinance 経由で取得）",
+  "unit": "百万円",
+  "disclaimer": "本ツールの数値は Yahoo! Finance の公開データを取得したものであり、各社の有価証券報告書と完全に一致することを保証しない。投資判断には使用しないこと。",
+  "companies": {
+    "9432": {
+      "name": "日本電信電話",
+      "sector": "情報・通信業",
+      "market": "東証プライム",
+      "code": "9432",
+      "name_en": "NTT, Inc.",
+      "employees": 344196,
+      "website": "https://group.ntt",
+      "headquarters": "Chiyoda",
+      "business_description": "NTT, Inc. operates as a telecommunications company in Japan and internationally. The company operates through the Comprehensive ICT Business, Regional Communications Business, Global Solutions Business, and Others segments. Its Comprehensive ICT Business segment offers mobile phone and fiber-optic broadband services; financial, content, and lifestyle services; and corporate communication services and solutions. This segment also engages in engineering, system development, and related businesses. The Regional Communications Business segment provides optical fiber services, corporate services, fixed-line telephone services, and related businesses. Its Global Solutions Business segment offers consulting, IT solutions, system and software development, and maintenance services. This segment is involved in port operations, data center operations, and related businesses. Its Others segment engages in real estate and construction, energy, and other businesses. The company was formerly known as Nippon Telegraph and Telephone Corporation and changed its name to NTT, Inc. in July 2025. NTT, Inc. was founded in 1952 and is headquartered in Chiyoda, Japan.",
+      "market_cap": 13609625
+    },
+    "9843": {
+      "name": "ニトリホールディングス",
+      "sector": "小売業",
+      "market": "東証プライム",
+      "code": "9843",
+      "name_en": "Nitori Holdings Co., Ltd.",
+      "employees": 19432,
+      "website": "https://www.nitorihd.co.jp",
+      "headquarters": "Tokyo",
+      "business_description": "Nitori Holdings Co., Ltd. engages in sales furniture and interior goods in Japan. It is involved in advertising and public relations support; logistics; and other activities. The company engages in insurance agency and clothing related, as well as information system and digital base businesses. Nitori Holdings Co., Ltd. was founded in 1967 and is headquartered in Tokyo, Japan.",
+      "market_cap": 1745462
+    },
+    "4661": {
+      "name": "オリエンタルランド",
+      "sector": "サービス業",
+      "market": "東証プライム",
+      "code": "4661",
+      "name_en": "Oriental Land Co., Ltd.",
+      "employees": 11207,
+      "website": "https://www.olc.co.jp",
+      "headquarters": "Urayasu",
+      "business_description": "Oriental Land Co., Ltd. operates and manages theme parks and hotels in Japan. It operates through Theme Park and Hotels segments. The Theme Park segment operates and manages Tokyo Disneyland and Tokyo DisneySea theme parks. The Hotel Business segment operates and manages Tokyo Disneyland Hotel, Tokyo DisneySea Hotel MiraCosta, Disney Ambassador Hotel, Tokyo Disney Celebration Hotel, Tokyo Disney Resort Toy Story Hotel, and Tokyo DisneySea Fantasy Springs Hotel. The company also operates and manages Ikspiari, a shopping complex that includes shops and restaurants, and a cinema complex; and Disney Resort Line, a monorail connecting four stations. It is also involved in the land development and maintenance of landscaping. Oriental Land Co., Ltd. was incorporated in 1960 and is based in Urayasu, Japan.",
+      "market_cap": 4942105
+    },
+    "2802": {
+      "name": "味の素",
+      "sector": "食料品",
+      "market": "東証プライム",
+      "code": "2802",
+      "name_en": "Ajinomoto Co., Inc.",
+      "employees": 34787,
+      "website": "https://www.ajinomoto.co.jp",
+      "headquarters": "Tokyo",
+      "business_description": "Ajinomoto Co., Inc. engages in the seasonings and foods, frozen foods, and healthcare and other businesses in Japan and internationally. The company operates through three segments: Seasonings and Foods; Frozen Foods; and Healthcare, etc. The Seasonings and Foods segment offers sauces and seasoning products under the AJI-NO-MOTO, HON-DASHI, Cook Do, Ajinomoto KK Consommé, Pure Select Mayonnaise, Ros Dee, Masako, Aji-ngon, Sazón, Sajiku, and CRISPY FRY names. This segment also provides instant noodles under the Knorr Cup Soup and YumYum names; coffee beverages under the Birdy and Blendy brands; powdered drink under the Birdy 3in1 name; MAXIM brand products; A Little Luxury Coffee Shop brand products and various gifts, office drinks, cup vending machines, and tea dispensers, etc. The Frozen Foods segment offers Gyoza dumplings, rice dishes, noodles, sweets, shumai, processed chicken, and other products. The Healthcare, etc segment provides amino acids for applications in various industries, such as pharmaceuticals and foods; contract development and manufacturing services for pharmaceutical intermediates and active ingredients, and sterile preparations. This segment also offers Ajinomoto Build-up Film, an interlayer insulating material for semiconductor packages; functional materials under the Plainset names; AFTINNOVA, such as activated carbon, release paper, etc.; feed amino acids, sports nutrition under the brand Aminovital, personal care materials under the brand Amisoft, amino acid-based makeup oil under the brand Eldew, and powder under the brand Amihope, medical foods, and agricultural services, etc. Ajinomoto Co., Inc. was founded in 1909 and is headquartered in Tokyo, Japan.",
+      "market_cap": 5177567
+    },
+    "6758": {
+      "name": "ソニーグループ",
+      "sector": "電気機器",
+      "market": "東証プライム",
+      "code": "6758",
+      "name_en": "Sony Group Corporation",
+      "employees": 94900,
+      "website": "https://www.sony.com",
+      "headquarters": "Tokyo",
+      "business_description": "Sony Group Corporation develops, designs, produces, manufactures, supplies, and sells electronic equipment, instruments, and devices for consumer, professional, and industrial use in Japan, the United States, Europe, China, the Asia-Pacific, and internationally. The company operates through Game & Network Services, Music, Pictures, Entertainment Technology & Services, and Imaging & Sensing Solutions. It develops, designs, produces, manufactures, provides, and sells smartphones and image sensors; plans, produces, manufactures, and sells music software, performances and merchandise, song lyrics and music management, licensing, animation works, and game applications. The company is also involved in the production, acquisition, sale, and distribution of motion pictures and television programs; operates television networks and direct-to-consumer distribution services; insurance business, including life insurance and non-life insurance; internet banking; production and sale of digital software add-on content; manufacturing and sales of home video game consoles; and interchangeable lens, projectors, and medical equipment. It has a strategic partnership with TCL Electronics Holdings Limited in the home entertainment sector; and a non-binding memorandum of understanding with Taiwan Semiconductor Manufacturing Company Limited for a strategic partnership regarding the development and manufacturing of image sensors. The company was formerly known as Sony Corporation and changed its name to Sony Group Corporation in April 2021. Sony Group Corporation was incorporated in 1946 and is headquartered in Tokyo, Japan.",
+      "market_cap": 22718621
+    }
+  },
+  "financials": {
+    "9432": {
+      "company_code": "9432",
+      "periods": 4,
+      "years": [
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "fiscal_period_end": [
+        "2023-03-31",
+        "2024-03-31",
+        "2025-03-31",
+        "2026-03-31"
+      ],
+      "unit": "百万円",
+      "net_profit_basis": "reported",
+      "income_statement": [
+        {
+          "year": 2023,
+          "revenue": 13136194,
+          "operating_profit": 1844953,
+          "net_profit": 1213116,
+          "net_profit_reported": 1213116,
+          "gross_margin": 0.7892,
+          "operating_margin": 0.1404,
+          "net_margin": 0.0923
+        },
+        {
+          "year": 2024,
+          "revenue": 13374569,
+          "operating_profit": 1937382,
+          "net_profit": 1279521,
+          "net_profit_reported": 1279521,
+          "gross_margin": 0.7805,
+          "operating_margin": 0.1449,
+          "net_margin": 0.0957
+        },
+        {
+          "year": 2025,
+          "revenue": 13704727,
+          "operating_profit": 1669639,
+          "net_profit": 1000016,
+          "net_profit_reported": 1000016,
+          "gross_margin": 0.7739,
+          "operating_margin": 0.1218,
+          "net_margin": 0.073
+        },
+        {
+          "year": 2026,
+          "revenue": 14409121,
+          "operating_profit": 1786410,
+          "net_profit": 1037032,
+          "net_profit_reported": 1037032,
+          "gross_margin": 0.7769,
+          "operating_margin": 0.124,
+          "net_margin": 0.072
+        }
+      ],
+      "balance_sheet": [
+        {
+          "year": 2023,
+          "total_assets": 25308851,
+          "total_equity": 8561353,
+          "total_debt": 9150533,
+          "current_assets": 6654868,
+          "fixed_assets": 18653983,
+          "current_liabilities": 6839986,
+          "long_term_debt": 6390155
+        },
+        {
+          "year": 2024,
+          "total_assets": 29604223,
+          "total_equity": 9844160,
+          "total_debt": 10714011,
+          "current_assets": 8324087,
+          "fixed_assets": 21280136,
+          "current_liabilities": 8845645,
+          "long_term_debt": 7048015
+        },
+        {
+          "year": 2025,
+          "total_assets": 30062483,
+          "total_equity": 10221587,
+          "total_debt": 11171213,
+          "current_assets": 8370359,
+          "fixed_assets": 21692124,
+          "current_liabilities": 8865263,
+          "long_term_debt": 7187500
+        },
+        {
+          "year": 2026,
+          "total_assets": 46721259,
+          "total_equity": 9727623,
+          "total_debt": 16919540,
+          "current_assets": 11344700,
+          "fixed_assets": 35376559,
+          "current_liabilities": 22332886,
+          "long_term_debt": 11315960
+        }
+      ],
+      "cash_flow": [
+        {
+          "year": 2023,
+          "operating_cf": 2261013,
+          "investing_cf": -1736912,
+          "financing_cf": -590197,
+          "free_cf": 409134
+        },
+        {
+          "year": 2024,
+          "operating_cf": 2374159,
+          "investing_cf": -1989235,
+          "financing_cf": -234454,
+          "free_cf": 290155
+        },
+        {
+          "year": 2025,
+          "operating_cf": 2364031,
+          "investing_cf": -1999644,
+          "financing_cf": -343027,
+          "free_cf": 231739
+        },
+        {
+          "year": 2026,
+          "operating_cf": 1485190,
+          "investing_cf": -1023424,
+          "financing_cf": 441332,
+          "free_cf": -770542
+        }
+      ],
+      "ratios": [
+        {
+          "year": 2023,
+          "roe": 0.1417,
+          "roa": 0.0479,
+          "debt_ratio": 0.3616,
+          "current_ratio": 0.9729,
+          "equity_ratio": 0.3383
+        },
+        {
+          "year": 2024,
+          "roe": 0.13,
+          "roa": 0.0432,
+          "debt_ratio": 0.3619,
+          "current_ratio": 0.941,
+          "equity_ratio": 0.3325
+        },
+        {
+          "year": 2025,
+          "roe": 0.0978,
+          "roa": 0.0333,
+          "debt_ratio": 0.3716,
+          "current_ratio": 0.9442,
+          "equity_ratio": 0.34
+        },
+        {
+          "year": 2026,
+          "roe": 0.1066,
+          "roa": 0.0222,
+          "debt_ratio": 0.3621,
+          "current_ratio": 0.508,
+          "equity_ratio": 0.2082
+        }
+      ],
+      "notes": []
+    },
+    "9843": {
+      "company_code": "9843",
+      "periods": 4,
+      "years": [
+        2022,
+        2024,
+        2025,
+        2026
+      ],
+      "fiscal_period_end": [
+        "2022-02-28",
+        "2024-03-31",
+        "2025-03-31",
+        "2026-03-31"
+      ],
+      "unit": "百万円",
+      "net_profit_basis": "reported",
+      "income_statement": [
+        {
+          "year": 2022,
+          "revenue": 811581,
+          "operating_profit": 138270,
+          "net_profit": 96724,
+          "net_profit_reported": 96724,
+          "gross_margin": 0.5248,
+          "operating_margin": 0.1704,
+          "net_margin": 0.1192
+        },
+        {
+          "year": 2024,
+          "revenue": 896667,
+          "operating_profit": 122197,
+          "net_profit": 90158,
+          "net_profit_reported": 90158,
+          "gross_margin": 0.5101,
+          "operating_margin": 0.1363,
+          "net_margin": 0.1005
+        },
+        {
+          "year": 2025,
+          "revenue": 928828,
+          "operating_profit": 114400,
+          "net_profit": 82546,
+          "net_profit_reported": 82546,
+          "gross_margin": 0.5102,
+          "operating_margin": 0.1232,
+          "net_margin": 0.0889
+        },
+        {
+          "year": 2026,
+          "revenue": 912248,
+          "operating_profit": 121268,
+          "net_profit": 89270,
+          "net_profit_reported": 89270,
+          "gross_margin": 0.5321,
+          "operating_margin": 0.1329,
+          "net_margin": 0.0979
+        }
+      ],
+      "balance_sheet": [
+        {
+          "year": 2022,
+          "total_assets": 983840,
+          "total_equity": 732812,
+          "total_debt": 92734,
+          "current_assets": 278367,
+          "fixed_assets": 705473,
+          "current_liabilities": 163181,
+          "long_term_debt": 50398
+        },
+        {
+          "year": 2024,
+          "total_assets": 1411292,
+          "total_equity": 840694,
+          "total_debt": 137557,
+          "current_assets": 345893,
+          "fixed_assets": 1065399,
+          "current_liabilities": 314581,
+          "long_term_debt": 30000
+        },
+        {
+          "year": 2025,
+          "total_assets": 1529421,
+          "total_equity": 905728,
+          "total_debt": 193138,
+          "current_assets": 364690,
+          "fixed_assets": 1164731,
+          "current_liabilities": 353664,
+          "long_term_debt": 20000
+        },
+        {
+          "year": 2026,
+          "total_assets": 1571284,
+          "total_equity": 988557,
+          "total_debt": 160000,
+          "current_assets": 397898,
+          "fixed_assets": 1173386,
+          "current_liabilities": 323497,
+          "long_term_debt": 10000
+        }
+      ],
+      "cash_flow": [
+        {
+          "year": 2022,
+          "operating_cf": 85565,
+          "investing_cf": -119980,
+          "financing_cf": 17729,
+          "free_cf": -17597
+        },
+        {
+          "year": 2024,
+          "operating_cf": 181164,
+          "investing_cf": -133107,
+          "financing_cf": -55378,
+          "free_cf": 53824
+        },
+        {
+          "year": 2025,
+          "operating_cf": 144384,
+          "investing_cf": -127856,
+          "financing_cf": 1295,
+          "free_cf": 19076
+        },
+        {
+          "year": 2026,
+          "operating_cf": 148911,
+          "investing_cf": -55103,
+          "financing_cf": -86502,
+          "free_cf": 104499
+        }
+      ],
+      "ratios": [
+        {
+          "year": 2022,
+          "roe": 0.132,
+          "roa": 0.0983,
+          "debt_ratio": 0.0943,
+          "current_ratio": 1.7059,
+          "equity_ratio": 0.7448
+        },
+        {
+          "year": 2024,
+          "roe": 0.1072,
+          "roa": 0.0639,
+          "debt_ratio": 0.0975,
+          "current_ratio": 1.0995,
+          "equity_ratio": 0.5957
+        },
+        {
+          "year": 2025,
+          "roe": 0.0911,
+          "roa": 0.054,
+          "debt_ratio": 0.1263,
+          "current_ratio": 1.0312,
+          "equity_ratio": 0.5922
+        },
+        {
+          "year": 2026,
+          "roe": 0.0903,
+          "roa": 0.0568,
+          "debt_ratio": 0.1018,
+          "current_ratio": 1.23,
+          "equity_ratio": 0.6291
+        }
+      ],
+      "notes": [
+        "決算期に飛びがある: 2022-02 → 2024-03（25ヶ月・この間の決算期がデータに存在しない）"
+      ]
+    },
+    "4661": {
+      "company_code": "4661",
+      "periods": 4,
+      "years": [
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "fiscal_period_end": [
+        "2023-03-31",
+        "2024-03-31",
+        "2025-03-31",
+        "2026-03-31"
+      ],
+      "unit": "百万円",
+      "net_profit_basis": "reported",
+      "income_statement": [
+        {
+          "year": 2023,
+          "revenue": 483123,
+          "operating_profit": 111200,
+          "net_profit": 80734,
+          "net_profit_reported": 80734,
+          "gross_margin": 0.3855,
+          "operating_margin": 0.2302,
+          "net_margin": 0.1671
+        },
+        {
+          "year": 2024,
+          "revenue": 618493,
+          "operating_profit": 165438,
+          "net_profit": 120225,
+          "net_profit_reported": 120225,
+          "gross_margin": 0.4034,
+          "operating_margin": 0.2675,
+          "net_margin": 0.1944
+        },
+        {
+          "year": 2025,
+          "revenue": 679374,
+          "operating_profit": 172111,
+          "net_profit": 124160,
+          "net_profit_reported": 124160,
+          "gross_margin": 0.4021,
+          "operating_margin": 0.2533,
+          "net_margin": 0.1828
+        },
+        {
+          "year": 2026,
+          "revenue": 704539,
+          "operating_profit": 168413,
+          "net_profit": 121881,
+          "net_profit_reported": 121881,
+          "gross_margin": 0.3874,
+          "operating_margin": 0.239,
+          "net_margin": 0.173
+        }
+      ],
+      "balance_sheet": [
+        {
+          "year": 2023,
+          "total_assets": 1206419,
+          "total_equity": 829689,
+          "total_debt": 240964,
+          "current_assets": 348941,
+          "fixed_assets": 857478,
+          "current_liabilities": 161249,
+          "long_term_debt": 205407
+        },
+        {
+          "year": 2024,
+          "total_assets": 1355215,
+          "total_equity": 949563,
+          "total_debt": 208953,
+          "current_assets": 452222,
+          "fixed_assets": 902993,
+          "current_liabilities": 246981,
+          "long_term_debt": 141252
+        },
+        {
+          "year": 2025,
+          "total_assets": 1438521,
+          "total_equity": 977407,
+          "total_debt": 266667,
+          "current_assets": 525366,
+          "fixed_assets": 913155,
+          "current_liabilities": 235882,
+          "long_term_debt": 211956
+        },
+        {
+          "year": 2026,
+          "total_assets": 1629076,
+          "total_equity": 1100019,
+          "total_debt": 326706,
+          "current_assets": 675214,
+          "fixed_assets": 953862,
+          "current_liabilities": 206385,
+          "long_term_debt": 300648
+        }
+      ],
+      "cash_flow": [
+        {
+          "year": 2023,
+          "operating_cf": 167729,
+          "investing_cf": -144426,
+          "financing_cf": -10939,
+          "free_cf": 74524
+        },
+        {
+          "year": 2024,
+          "operating_cf": 197674,
+          "investing_cf": -21265,
+          "financing_cf": -45625,
+          "free_cf": 144981
+        },
+        {
+          "year": 2025,
+          "operating_cf": 195388,
+          "investing_cf": -253140,
+          "financing_cf": -26872,
+          "free_cf": 92691
+        },
+        {
+          "year": 2026,
+          "operating_cf": 181281,
+          "investing_cf": -172096,
+          "financing_cf": 38556,
+          "free_cf": 97677
+        }
+      ],
+      "ratios": [
+        {
+          "year": 2023,
+          "roe": 0.0973,
+          "roa": 0.0669,
+          "debt_ratio": 0.1997,
+          "current_ratio": 2.164,
+          "equity_ratio": 0.6877
+        },
+        {
+          "year": 2024,
+          "roe": 0.1266,
+          "roa": 0.0887,
+          "debt_ratio": 0.1542,
+          "current_ratio": 1.831,
+          "equity_ratio": 0.7007
+        },
+        {
+          "year": 2025,
+          "roe": 0.127,
+          "roa": 0.0863,
+          "debt_ratio": 0.1854,
+          "current_ratio": 2.2272,
+          "equity_ratio": 0.6795
+        },
+        {
+          "year": 2026,
+          "roe": 0.1108,
+          "roa": 0.0748,
+          "debt_ratio": 0.2005,
+          "current_ratio": 3.2716,
+          "equity_ratio": 0.6752
+        }
+      ],
+      "notes": [
+        "売上を取得できなかった期を分析対象から外した: 2022-03-31"
+      ]
+    },
+    "2802": {
+      "company_code": "2802",
+      "periods": 4,
+      "years": [
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "fiscal_period_end": [
+        "2023-03-31",
+        "2024-03-31",
+        "2025-03-31",
+        "2026-03-31"
+      ],
+      "unit": "百万円",
+      "net_profit_basis": "reported",
+      "income_statement": [
+        {
+          "year": 2023,
+          "revenue": 1359115,
+          "operating_profit": 144602,
+          "net_profit": 94065,
+          "net_profit_reported": 94065,
+          "gross_margin": 0.3461,
+          "operating_margin": 0.1064,
+          "net_margin": 0.0692
+        },
+        {
+          "year": 2024,
+          "revenue": 1439231,
+          "operating_profit": 141953,
+          "net_profit": 87121,
+          "net_profit_reported": 87121,
+          "gross_margin": 0.3554,
+          "operating_margin": 0.0986,
+          "net_margin": 0.0605
+        },
+        {
+          "year": 2025,
+          "revenue": 1530556,
+          "operating_profit": 107656,
+          "net_profit": 70272,
+          "net_profit_reported": 70272,
+          "gross_margin": 0.3598,
+          "operating_margin": 0.0703,
+          "net_margin": 0.0459
+        },
+        {
+          "year": 2026,
+          "revenue": 1583719,
+          "operating_profit": 191301,
+          "net_profit": 134675,
+          "net_profit_reported": 134675,
+          "gross_margin": 0.3771,
+          "operating_margin": 0.1208,
+          "net_margin": 0.085
+        }
+      ],
+      "balance_sheet": [
+        {
+          "year": 2023,
+          "total_assets": 1511734,
+          "total_equity": 768676,
+          "total_debt": 288564,
+          "current_assets": 615537,
+          "fixed_assets": 896197,
+          "current_liabilities": 339644,
+          "long_term_debt": 239244
+        },
+        {
+          "year": 2024,
+          "total_assets": 1768371,
+          "total_equity": 815074,
+          "total_debt": 442494,
+          "current_assets": 709632,
+          "fixed_assets": 1058739,
+          "current_liabilities": 501569,
+          "long_term_debt": 254224
+        },
+        {
+          "year": 2025,
+          "total_assets": 1721131,
+          "total_equity": 746804,
+          "total_debt": 455353,
+          "current_assets": 701298,
+          "fixed_assets": 1019833,
+          "current_liabilities": 384588,
+          "long_term_debt": 416207
+        },
+        {
+          "year": 2026,
+          "total_assets": 1812346,
+          "total_equity": 770819,
+          "total_debt": 421355,
+          "current_assets": 704170,
+          "fixed_assets": 1108176,
+          "current_liabilities": 449063,
+          "long_term_debt": 380922
+        }
+      ],
+      "cash_flow": [
+        {
+          "year": 2023,
+          "operating_cf": 117640,
+          "investing_cf": -30087,
+          "financing_cf": -111061,
+          "free_cf": 44594
+        },
+        {
+          "year": 2024,
+          "operating_cf": 168074,
+          "investing_cf": -132434,
+          "financing_cf": -6753,
+          "free_cf": 96052
+        },
+        {
+          "year": 2025,
+          "operating_cf": 209898,
+          "investing_cf": -77382,
+          "financing_cf": -137684,
+          "free_cf": 114808
+        },
+        {
+          "year": 2026,
+          "operating_cf": null,
+          "investing_cf": null,
+          "financing_cf": null,
+          "free_cf": null
+        }
+      ],
+      "ratios": [
+        {
+          "year": 2023,
+          "roe": 0.1224,
+          "roa": 0.0622,
+          "debt_ratio": 0.1909,
+          "current_ratio": 1.8123,
+          "equity_ratio": 0.5085
+        },
+        {
+          "year": 2024,
+          "roe": 0.1069,
+          "roa": 0.0493,
+          "debt_ratio": 0.2502,
+          "current_ratio": 1.4148,
+          "equity_ratio": 0.4609
+        },
+        {
+          "year": 2025,
+          "roe": 0.0941,
+          "roa": 0.0408,
+          "debt_ratio": 0.2646,
+          "current_ratio": 1.8235,
+          "equity_ratio": 0.4339
+        },
+        {
+          "year": 2026,
+          "roe": 0.1747,
+          "roa": 0.0743,
+          "debt_ratio": 0.2325,
+          "current_ratio": 1.5681,
+          "equity_ratio": 0.4253
+        }
+      ],
+      "notes": [
+        "売上を取得できなかった期を分析対象から外した: 2022-03-31"
+      ]
+    },
+    "6758": {
+      "company_code": "6758",
+      "periods": 4,
+      "years": [
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "fiscal_period_end": [
+        "2023-03-31",
+        "2024-03-31",
+        "2025-03-31",
+        "2026-03-31"
+      ],
+      "unit": "百万円",
+      "net_profit_basis": "continuing_operations",
+      "income_statement": [
+        {
+          "year": 2023,
+          "revenue": 10974373,
+          "operating_profit": 1273205,
+          "net_profit": 1005277,
+          "net_profit_reported": 1005277,
+          "gross_margin": 0.2948,
+          "operating_margin": 0.116,
+          "net_margin": 0.0916
+        },
+        {
+          "year": 2024,
+          "revenue": 11260037,
+          "operating_profit": 1012816,
+          "net_profit": 846060,
+          "net_profit_reported": 970573,
+          "gross_margin": 0.2816,
+          "operating_margin": 0.0899,
+          "net_margin": 0.0751
+        },
+        {
+          "year": 2025,
+          "revenue": 12034917,
+          "operating_profit": 1280339,
+          "net_profit": 1067431,
+          "net_profit_reported": 1141600,
+          "gross_margin": 0.2933,
+          "operating_margin": 0.1064,
+          "net_margin": 0.0887
+        },
+        {
+          "year": 2026,
+          "revenue": 12479620,
+          "operating_profit": 1553690,
+          "net_profit": 1030893,
+          "net_profit_reported": -326865,
+          "gross_margin": 0.3081,
+          "operating_margin": 0.1245,
+          "net_margin": 0.0826
+        }
+      ],
+      "balance_sheet": [
+        {
+          "year": 2023,
+          "total_assets": 31154095,
+          "total_equity": 6598537,
+          "total_debt": 3870572,
+          "current_assets": 5722532,
+          "fixed_assets": 25431563,
+          "current_liabilities": 9318409,
+          "long_term_debt": 1767696
+        },
+        {
+          "year": 2024,
+          "total_assets": 34107490,
+          "total_equity": 7587177,
+          "total_debt": 4088433,
+          "current_assets": 6776806,
+          "fixed_assets": 27330684,
+          "current_liabilities": 10192045,
+          "long_term_debt": 2058117
+        },
+        {
+          "year": 2025,
+          "total_assets": 35293173,
+          "total_equity": 8179745,
+          "total_debt": 4198246,
+          "current_assets": 7454988,
+          "fixed_assets": 27838185,
+          "current_liabilities": 10688788,
+          "long_term_debt": 1557867
+        },
+        {
+          "year": 2026,
+          "total_assets": 15683490,
+          "total_equity": 8119011,
+          "total_debt": 1669669,
+          "current_assets": 5949991,
+          "fixed_assets": 9733499,
+          "current_liabilities": 5032624,
+          "long_term_debt": 824393
+        }
+      ],
+      "cash_flow": [
+        {
+          "year": 2023,
+          "operating_cf": 314691,
+          "investing_cf": -1052664,
+          "financing_cf": 84300,
+          "free_cf": -298944
+        },
+        {
+          "year": 2024,
+          "operating_cf": 1373213,
+          "investing_cf": -818886,
+          "financing_cf": -210709,
+          "free_cf": 767434
+        },
+        {
+          "year": 2025,
+          "operating_cf": 2321675,
+          "investing_cf": -930120,
+          "financing_cf": -298243,
+          "free_cf": 1700690
+        },
+        {
+          "year": 2026,
+          "operating_cf": 1945617,
+          "investing_cf": -1970542,
+          "financing_cf": -842761,
+          "free_cf": 1487936
+        }
+      ],
+      "ratios": [
+        {
+          "year": 2023,
+          "roe": 0.1523,
+          "roa": 0.0323,
+          "debt_ratio": 0.1242,
+          "current_ratio": 0.6141,
+          "equity_ratio": 0.2118
+        },
+        {
+          "year": 2024,
+          "roe": 0.1115,
+          "roa": 0.0248,
+          "debt_ratio": 0.1199,
+          "current_ratio": 0.6649,
+          "equity_ratio": 0.2224
+        },
+        {
+          "year": 2025,
+          "roe": 0.1305,
+          "roa": 0.0302,
+          "debt_ratio": 0.119,
+          "current_ratio": 0.6975,
+          "equity_ratio": 0.2318
+        },
+        {
+          "year": 2026,
+          "roe": 0.127,
+          "roa": 0.0657,
+          "debt_ratio": 0.1065,
+          "current_ratio": 1.1823,
+          "equity_ratio": 0.5177
+        }
+      ],
+      "notes": [
+        "2024年3月期は最終利益（970,573百万円）と継続事業利益（846,060百万円）が乖離している。非継続事業の影響を除くため、本ツールでは継続事業ベースを純利益として扱う",
+        "2025年3月期は最終利益（1,141,600百万円）と継続事業利益（1,067,431百万円）が乖離している。非継続事業の影響を除くため、本ツールでは継続事業ベースを純利益として扱う",
+        "2026年3月期は最終利益（-326,865百万円）と継続事業利益（1,030,893百万円）が乖離している。非継続事業の影響を除くため、本ツールでは継続事業ベースを純利益として扱う",
+        "売上を取得できなかった期を分析対象から外した: 2022-03-31"
+      ]
+    }
+  }
+}

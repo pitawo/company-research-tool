@@ -6,6 +6,21 @@ from plotly.subplots import make_subplots
 from typing import Dict, Any, List
 import numpy as np
 
+def format_amount(value):
+    """百万円の値を、桁数に応じた単位で短く表す。
+
+    メトリック表示の幅は狭いので「124796億円」のような長い数字は途中で
+    省略されてしまう。1兆円を超えたら兆円に切り替える。
+    """
+    if value is None:
+        return "-"
+    if abs(value) >= 1000000:      # 1兆円以上
+        return "%.2f兆円" % (value / 1000000)
+    if abs(value) >= 100:          # 100億円以上
+        return "{:,.0f}億円".format(value / 100)
+    return "{:,.0f}百万円".format(value)
+
+
 class FinancialDashboard:
     """
     財務ダッシュボードを表示するコンポーネント
@@ -55,7 +70,7 @@ class FinancialDashboard:
             revenue_growth = self._get_latest_growth_rate('revenue')
             st.metric(
                 "売上高",
-                f"{revenue / 100:.0f}億円",
+                format_amount(revenue),
                 delta=f"{revenue_growth:+.1f}%",
                 help="前年同期比"
             )
@@ -65,7 +80,7 @@ class FinancialDashboard:
             profit_growth = self._get_latest_growth_rate('operating_profit')
             st.metric(
                 "営業利益",
-                f"{operating_profit / 100:.0f}億円",
+                format_amount(operating_profit),
                 delta=f"{profit_growth:+.1f}%",
                 help="前年同期比"
             )

@@ -37,31 +37,23 @@ class CompanyOverview:
         with col1:
             st.subheader("📋 会社概要")
             
-            # 基本情報を表形式で表示
-            basic_info = {
-                "項目": [
-                    "会社名",
-                    "証券コード", 
-                    "本社所在地",
-                    "設立年月日",
-                    "代表者",
-                    "従業員数",
-                    "業種",
-                    "上場市場"
-                ],
-                "内容": [
-                    self.company_data.get('name', '不明'),
-                    self.company_data.get('code', '不明'),
-                    self.company_data.get('headquarters', '不明'),
-                    self.company_data.get('establishment', '不明'),
-                    self.company_data.get('representative', '不明'),
-                    f"{self.company_data.get('employees', 0):,}人" if self.company_data.get('employees', 0) > 0 else '不明',
-                    self.company_data.get('sector', '不明'),
-                    self.company_data.get('market', '不明')
-                ]
-            }
-            
-            df_basic = pd.DataFrame(basic_info)
+            # 取得できた項目だけを表に出す。
+            # 設立年月日・代表者は取得元に無いため、「不明」を並べても情報にならない。
+            employees = self.company_data.get('employees')
+            rows = [
+                ("会社名", self.company_data.get('name')),
+                ("証券コード", self.company_data.get('code')),
+                ("業種", self.company_data.get('sector')),
+                ("上場市場", self.company_data.get('market')),
+                ("本社所在地", self.company_data.get('headquarters')),
+                ("従業員数", "{:,}人".format(employees) if employees else None),
+            ]
+            rows = [(label, value) for label, value in rows if value]
+
+            df_basic = pd.DataFrame({
+                "項目": [label for label, _ in rows],
+                "内容": [value for _, value in rows],
+            })
             st.table(df_basic)
         
         with col2:
@@ -229,20 +221,22 @@ class CompanyOverview:
         # 追加指標
         st.subheader("🎯 経営効率指標")
 
-        col1, col2, col3 = st.columns(3)
+        # 3列だとラベルも数値も切れるため 2列 + 1列にする
+        col1, col2 = st.columns(2)
 
         with col1:
             revenue = performance.get('revenue')
             employees = self.company_data.get('employees') or 0
             if revenue and employees:
                 # revenue は百万円単位
+                per_head = revenue / employees
                 st.metric(
-                    "従業員一人当たり売上",
-                    f"{revenue / employees:.1f}百万円",
+                    "一人当たり売上",
+                    ("%.0f百万円" % per_head) if per_head >= 10 else ("%.1f百万円" % per_head),
                     help="最新期の売上 / 連結従業員数"
                 )
             else:
-                st.metric("従業員一人当たり売上", "-")
+                st.metric("一人当たり売上", "-")
 
         with col2:
             st.metric(
@@ -250,6 +244,8 @@ class CompanyOverview:
                 pct(performance.get('profit_growth'), signed=True),
                 help=period_help + "・純利益"
             )
+
+        col3, _ = st.columns(2)
 
         with col3:
             debt_ratio = performance.get('debt_ratio')

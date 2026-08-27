@@ -15,7 +15,7 @@ def format_amount(value):
     if value is None:
         return "-"
     if abs(value) >= 1000000:      # 1兆円以上
-        return "%.2f兆円" % (value / 1000000)
+        return "%.1f兆円" % (value / 1000000)
     if abs(value) >= 100:          # 100億円以上
         return "{:,.0f}億円".format(value / 100)
     return "{:,.0f}百万円".format(value)

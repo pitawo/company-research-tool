@@ -16,6 +16,46 @@ from typing import Any, Dict, List, Optional, Tuple
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SNAPSHOT_PATH = os.path.join(BASE_DIR, "data", "financials.json")
 
+# 分析に最低限必要な貸借対照表の項目。
+# 銀行・保険は流動／固定の区分を持たないため、これらが取得できない。
+# 揃わない企業を無理に分析すると指標が壊れるので、その場で断る。
+REQUIRED_BALANCE_KEYS = {
+    "total_assets": "総資産",
+    "total_equity": "自己資本",
+    "current_assets": "流動資産",
+    "current_liabilities": "流動負債",
+}
+
+
+def describe_error(exc):
+    """例外を、利用者に意味が伝わる日本語のメッセージに変換する。
+
+    ライブラリの英語メッセージや内部パスをそのまま画面に出さないための入口。
+    """
+    name = type(exc).__name__
+    text = str(exc)
+
+    if isinstance(exc, (TypeError, KeyError)) or "NoneType" in text:
+        return "この企業の財務データには本ツールが必要とする項目が揃っていません。"
+    if isinstance(exc, ZeroDivisionError):
+        return "財務指標を計算できませんでした（分母が 0 の項目があります）。"
+    if "HTTPError" in name or "URLError" in name or "ConnectionError" in name or "Timeout" in name:
+        return "データの取得に失敗しました。時間をおいて、もう一度お試しください。"
+    if isinstance(exc, FileNotFoundError):
+        return "同梱データが見つかりません。`python tools/fetch_financials.py` で作成してください。"
+    if isinstance(exc, json.JSONDecodeError):
+        return "同梱データを読み込めませんでした。`python tools/fetch_financials.py` で作り直してください。"
+    return "処理中に問題が発生しました（%s）。入力を確認して、もう一度お試しください。" % name
+
+
+def missing_balance_keys(financial):
+    """最新期の貸借対照表に欠けている必須項目の日本語名を返す。"""
+    sheets = financial.get("balance_sheet") or []
+    if not sheets:
+        return list(REQUIRED_BALANCE_KEYS.values())
+    latest = sheets[-1]
+    return [label for key, label in REQUIRED_BALANCE_KEYS.items() if latest.get(key) is None]
+
 
 class DataSourceManager:
     """同梱スナップショット＋任意コードのライブ取得を束ねる。"""
@@ -181,6 +221,15 @@ class DataSourceManager:
         income = financial.get("income_statement") or []
         if not income or income[-1].get("revenue") is None:
             return False, "証券コード %s の財務データが見つかりませんでした" % code
+
+        # 銀行・保険などは流動／固定の区分を持たず、本ツールの指標を計算できない
+        missing = missing_balance_keys(financial)
+        if missing:
+            return False, (
+                "証券コード %s は貸借対照表の%sが取得できないため、本ツールでは分析できません"
+                "（銀行・保険など流動／固定の区分を持たない業態が該当します）"
+                % (code, "・".join(missing))
+            )
 
         self._live_cache[code] = {"company": profile, "financials": financial}
         return True, "%s の実データを取得しました（出典: Yahoo! Finance）" % code

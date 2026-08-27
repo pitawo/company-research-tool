@@ -26,7 +26,7 @@ def load_config():
 
 config = load_config()
 
-from utils.data_sources import DataSourceManager
+from utils.data_sources import DataSourceManager, describe_error
 from utils.financial_analysis import FinancialAnalyzer
 from utils.report_generator import ReportGenerator
 from components.company_overview import CompanyOverview
@@ -190,7 +190,7 @@ def search_company(search_input, search_method):
                 st.error("❌ 企業が見つかりませんでした")
                 
     except Exception as e:
-        st.error(f"❌ エラーが発生しました: {str(e)}")
+        st.error("❌ " + describe_error(e))
 
 def get_periods_from_setting():
     # Yahoo! Finance の年次データは概ね4期分なので、それ以上を選べるようにしない
@@ -335,7 +335,7 @@ def generate_full_report():
             st.success("✅ レポートが生成されました！ダウンロードボタンからダウンロードできます。")
             
     except Exception as e:
-        st.error(f"❌ レポート生成エラー: {str(e)}")
+        st.error("❌ レポートを作成できませんでした。" + describe_error(e))
 
 if __name__ == "__main__":
     main()

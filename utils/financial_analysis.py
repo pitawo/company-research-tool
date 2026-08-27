@@ -276,7 +276,9 @@ class FinancialAnalyzer:
         if start is None or end is None or start <= 0 or end <= 0:
             return 0.0
         years = len(values) - 1
-        return ((end / start) ** (1 / years) - 1) * 100
+        # 小数で返す（0.05 = 5%）。他の比率と単位を揃えるため、
+        # パーセント化は表示側に任せる。判定・スコア計算も小数を前提にしている。
+        return (end / start) ** (1 / years) - 1
     
     def _calculate_yoy_growth(self, statements: List[Dict]) -> Dict[str, float]:
         """前年同期比成長率計算"""

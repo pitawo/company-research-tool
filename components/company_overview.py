@@ -79,11 +79,6 @@ class CompanyOverview:
             if name_en:
                 st.markdown(f"**英語名**: {name_en}")
             
-            # 事業内容
-            business_desc = self.company_data.get('business_description', '')
-            if business_desc:
-                st.markdown(f"**事業内容**: {business_desc}")
-            
             # 設立からの経過年数
             establishment = self.company_data.get('establishment', '')
             if establishment:
@@ -102,7 +97,14 @@ class CompanyOverview:
                 else:
                     market_cap_formatted = f"{market_cap / 10000:.0f}億円"
                 st.metric("時価総額", market_cap_formatted)
-    
+
+        # 事業内容は取得元の原文（英語）で長いため、
+        # 狭いカラムに入れず全幅の折りたたみに置く
+        business_desc = self.company_data.get('business_description')
+        if business_desc:
+            with st.expander("📝 事業内容（出典: Yahoo! Finance・原文のまま）"):
+                st.write(business_desc)
+
     def _display_business_segments(self):
         """事業セグメント情報を表示"""
         st.header("📊 事業セグメント")
@@ -128,7 +130,7 @@ class CompanyOverview:
                 })
             
             df_segments = pd.DataFrame(segment_data)
-            st.dataframe(df_segments, use_container_width=True)
+            st.dataframe(df_segments, use_container_width=True, hide_index=True)
         
         with col2:
             st.subheader("売上構成比")
@@ -187,7 +189,8 @@ class CompanyOverview:
         period_label = performance.get('period')
         period_help = "前期比（%s年3月期など直近期）" % period_label if period_label else "前期比"
 
-        col1, col2, col3, col4 = st.columns(4)
+        # 4列だと本番の幅で数値が省略されるため 2列×2行にする
+        col1, col2 = st.columns(2)
 
         with col1:
             employees = self.company_data.get('employees') or 0
@@ -206,6 +209,8 @@ class CompanyOverview:
             else:
                 cap_formatted = "-"
             st.metric("時価総額", cap_formatted, help="Yahoo! Finance の取得値")
+
+        col3, col4 = st.columns(2)
 
         with col3:
             st.metric(

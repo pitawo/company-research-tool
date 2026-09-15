@@ -1,0 +1,13 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+*.log
+logs/
+exports/
+.streamlit/secrets.toml

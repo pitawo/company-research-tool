@@ -1,8 +1,9 @@
-# 動作確認: Python 3.10.6 / streamlit 1.47.0 / yfinance 1.7.0
-streamlit>=1.28.0
-pandas>=1.5.0
-numpy>=1.24.0
-plotly>=5.15.0
-pyyaml>=6.0
-python-dotenv>=1.0.0
-yfinance>=0.2.40
+# 動作確認: Python 3.11.16（Dockerfile と同じ）
+# 再ビルドで別の版が入らないよう、動作確認した版に固定している
+streamlit==1.63.0
+pandas==3.0.5
+numpy==2.4.6
+plotly==7.0.0
+pyyaml==6.0.3
+python-dotenv==1.2.3
+yfinance==1.7.0
